@@ -1,22 +1,22 @@
 // https://leetcode.com/problems/binary-search/description/
 
-function search(nums: number[], target: number, l?: number, r?: number): number {
-    l = l === undefined ? 0 : l;
-    r = r === undefined ? nums.length : r;
+function search(nums: number[], target: number): number {
+    let l = 0;
+    let r = nums.length - 1;
+    
+    while (l !== r) {
+        const mid = Math.floor((l + r) / 2);
 
-    if (l === r) {
-        return -1;
+        if (target > nums[mid]) {
+            l = mid + 1;
+        } else {
+            r = mid;
+        }
     }
 
-    const mid = Math.floor((r - l) / 2);
-
-    if (nums[l + mid] === target) {
-        return l + mid;
+    if (target === nums[l]) {
+        return l;
     }
 
-    if (target > nums[l + mid]) {
-        return search(nums, target, l + mid + 1, r);
-    } else {
-        return search(nums, target, l, l + mid);
-    }
+    return -1;
 };
