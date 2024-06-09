@@ -1,9 +1,10 @@
 // https://leetcode.com/problems/product-of-array-except-self/description/
 
-
+// если не понял, см ниже решение
 function productExceptSelf(nums: number[]): number[] {
     const res = [];
     
+    // считаем все слева
     for (let i = 0; i < nums.length; i++) {
         if (nums[i - 1] === undefined) {
             res[i] = 1;
@@ -14,6 +15,7 @@ function productExceptSelf(nums: number[]): number[] {
 
     let r = 1;
 
+    // умножаем на все справа
     for (let i = nums.length - 1; i >= 0; i--) {
         res[i] = res[i] * r;
 

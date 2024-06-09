@@ -8,7 +8,7 @@ function twoSum(nums: number[], target: number): number[] {
     }
 
     for (let i = 0; i < nums.length; i++) {
-        if (obj[nums[i]]) {
+        if (obj[nums[i]] && obj[nums[i]] !== i) {
             return [i, obj[nums[i]]];
         }
     }
