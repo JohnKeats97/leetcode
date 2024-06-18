@@ -1,26 +1,23 @@
-// https://leetcode.com/problems/trapping-rain-water/description/
+// https://leetcode.com/problems/trapping-rain-water/
+
+// ВАНЬ это решение с 2 указателями, пока картинки плз
 
 function trap(height: number[]): number {
-    let sum = 0;
-
-    let lastMax = 0;
-    let cur = 1;
-
-    while (cur < height.length) {
-        if (height[cur] >= height[lastMax]) {
-            let h = Math.min(height[lastMax], height[cur]);
-
-            for (let i = lastMax + 1; i < cur; i++) {
-                sum = sum + h - height[i];
-            }
-
-            lastMax = cur;
+    let left = 0,
+        right = height.length - 1;
+    let ans = 0;
+    let left_max = 0,
+        right_max = 0;
+    while (left < right) {
+        if (height[left] < height[right]) {
+            left_max = Math.max(left_max, height[left]);
+            ans += left_max - height[left];
+            ++left;
+        } else {
+            right_max = Math.max(right_max, height[right]);
+            ans += right_max - height[right];
+            --right;
         }
-
-        cur++;
     }
-
-    // не учитываю последнюю
-
-    return sum;
-};
+    return ans;
+}
