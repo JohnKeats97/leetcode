@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/3sum/description/
 
+// ВАНЯ посмотри плз тут решение, а то я вообще хз как я это написал, но я вроде подсматривал)
+
 function threeSum(nums: number[]): number[][] {
     const sNums = nums.sort((a, b) => a - b);
 
